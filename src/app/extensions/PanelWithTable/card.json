@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "A Panel with a Table",
+    "uid": "panel_table_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "PanelWithTable.jsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}
