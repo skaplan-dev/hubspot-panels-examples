@@ -12,6 +12,9 @@
         },
         {
           "file": "extensions/panel-with-table.json"
+        },
+        {
+          "file": "extensions/panel-with-form.json"
         }
       ]
     }
