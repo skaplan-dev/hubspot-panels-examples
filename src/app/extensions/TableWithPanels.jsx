@@ -64,13 +64,11 @@ const nameToQuotes = {
 
 const Extension = () => {
   const [selected, setSelected] = useState('')
-  const [open, setOpen] = useState(false)
 
   return (
     <>
      <Panel id="my-panel" title={`${selected} Quotes`} onClose={()=> console.log('closed')}  >
         {selected && nameToQuotes[selected].map(quote => <Text>{quote}</Text>)}
-        <Button>Click me</Button>
       </Panel>
 
       <Table>

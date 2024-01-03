@@ -1,11 +1,11 @@
 {
   "type": "crm-card",
   "data": {
-    "title": "I Think You Should Leave Characters",
-    "uid": "get_started_card",
+    "title": "Table with Panel details",
+    "uid": "panel_details_card",
     "location": "crm.record.tab",
     "module": {
-      "file": "Example.jsx"
+      "file": "TableWithPanels.jsx"
     },
     "objectTypes": [{ "name": "contacts" }]
   }
