@@ -1,10 +1,9 @@
 exports.main = (context = {}, sendResponse) => {
-
-  const response = `This is coming from a serverless function`;
+  const response = `This is coming from a serverless function`
 
   try {
-    sendResponse(response);
+    sendResponse(response)
   } catch (error) {
-    sendResponse(error);
+    sendResponse(error)
   }
-};
+}
