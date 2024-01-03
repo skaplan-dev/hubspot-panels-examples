@@ -8,10 +8,10 @@
     "crm": {
       "cards": [
         {
-          "file": "extensions/TableWithPanel/card.json"
+          "file": "extensions/table-with-panel.json"
         },
         {
-          "file": "extensions/PanelWithTable/card.json"
+          "file": "extensions/panel-with-table.json"
         }
       ]
     }
