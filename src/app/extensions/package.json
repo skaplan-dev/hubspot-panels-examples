@@ -1,0 +1,23 @@
+{
+  "name": "hubspot-example-extension",
+  "version": "0.1.0",
+  "author": "HubSpot",
+  "license": "MIT",
+  "scripts": {
+    "dev": "hs-ui-extensions-dev-server dev",
+    "build": "hs-ui-extensions-dev-server build",
+    "bump": "npm install -s @hubspot/ui-extensions@latest && npm install -D @hubspot/ui-extensions-dev-server@latest",
+    "setup": "npm run bump && npm ci",
+    "clean-install-local": "rm -rf node_modules/ package-lock.json && npm update && npm install --install-links",
+    "developing-local-dev-server": "../../../scripts/useLocalVersionOfDevServer.js && npm run clean-install-local",
+    "developing-local-components": "../../../scripts/useLocalVersionOfComponents.js && npm run clean-install-local"
+  },
+  "dependencies": {
+    "@hubspot/cli": "^5.0.2",
+    "@hubspot/ui-extensions": "^0.8.5",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@hubspot/ui-extensions-dev-server": "^0.8.4"
+  }
+}
