@@ -12,8 +12,7 @@ import {
   TableRow,
   Text,
 } from '@hubspot/ui-extensions'
-import { Panel } from '@hubspot/ui-extensions/experimental'
-
+import { Panel, PanelSection } from '@hubspot/ui-extensions/experimental'
 
 const specs = [
   {
@@ -46,8 +45,9 @@ const specs = [
   },
   {
     name: 'Water Resistant',
-    value: 'Rated IP68 (maximum depth of 6 meters up to 30 minutes) under IEC standard 60529',
-  }
+    value:
+      'Rated IP68 (maximum depth of 6 meters up to 30 minutes) under IEC standard 60529',
+  },
 ]
 
 // Define the extension to be run within the Hubspot CRM
@@ -56,29 +56,36 @@ hubspot.extend(({ runServerlessFunction, actions }) => (
 ))
 
 const Extension = () => {
-
   return (
     <>
       <Panel
         id='my-panel'
         title={`IPhone 14 specs`}
         onClose={() => console.log('closed')}
-        flush={true}
+        variant='modal'
       >
-        <Table flush={true}>
-          <TableHead>
-            <TableRow>
-              <TableHeader>Spec</TableHeader>
-              <TableHeader>Value</TableHeader>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-           {specs.map((spec) => <TableRow>
-            <TableCell>{spec.name}</TableCell>
-            <TableCell>{spec.value}</TableCell>
-           </TableRow>)}
-          </TableBody>
-        </Table>
+        <PanelBody>
+          <PanelSection>
+            <Table condensed={true}>
+              <TableHead>
+                <TableRow>
+                  <TableHeader>Spec</TableHeader>
+                  <TableHeader>Value</TableHeader>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {specs.map(spec => (
+                  <TableRow>
+                    <TableCell>{spec.name}</TableCell>
+                    <TableCell>{spec.value}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </PanelSection>
+
+          <PanelSection>test 123</PanelSection>
+        </PanelBody>
       </Panel>
 
       <Table>
@@ -95,7 +102,7 @@ const Extension = () => {
               <Flex align='center' direction='row' justify='between'>
                 <Text>$1000</Text>
                 <Button
-                size='xs'
+                  size='xs'
                   onClick={async (__, reactions) => {
                     reactions.openPanel('my-panel')
                   }}

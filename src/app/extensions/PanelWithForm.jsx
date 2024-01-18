@@ -1,54 +1,18 @@
 import React from 'react'
+
 import {
   Button,
-  Flex,
+  Form,
   hubspot,
-  Link,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-  Text,
+  NumberInput,
+  Select,
 } from '@hubspot/ui-extensions'
-import { Panel } from '@hubspot/ui-extensions/experimental'
-
-const specs = [
-  {
-    name: 'Capacity',
-    value: '128GB',
-  },
-  {
-    name: 'Display',
-    value: '6.7-inch (diagonal) all-screen OLED display',
-  },
-  {
-    name: 'Chip',
-    value: 'A15 Bionic chip',
-  },
-  {
-    name: 'Camera',
-    value: 'Pro 12MP camera system: Telephoto, Wide, and Ultra Wide cameras',
-  },
-  {
-    name: 'Video Recording',
-    value: '4K video recording at 24 fps, 25 fps, 30 fps, or 60 fps',
-  },
-  {
-    name: 'TrueDepth Camera',
-    value: '12MP camera',
-  },
-  {
-    name: 'Battery',
-    value: 'Built-in rechargeable lithium-ion battery',
-  },
-  {
-    name: 'Water Resistant',
-    value:
-      'Rated IP68 (maximum depth of 6 meters up to 30 minutes) under IEC standard 60529',
-  },
-]
+import {
+  Panel,
+  PanelBody,
+  PanelFooter,
+  PanelSection,
+} from '@hubspot/ui-extensions/experimental'
 
 // Define the extension to be run within the Hubspot CRM
 hubspot.extend(({ runServerlessFunction, actions }) => (
@@ -58,31 +22,45 @@ hubspot.extend(({ runServerlessFunction, actions }) => (
 const Extension = () => {
   return (
     <>
-      <Panel
-        id='my-panel'
-        title={`IPhone 14 specs`}
-        onClose={() => console.log('closed')}
-        flush={true}
-      >
-        <Table flush={true}>
-          <TableHead>
-            <TableRow>
-              <TableHeader>Spec</TableHeader>
-              <TableHeader>Value</TableHeader>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {specs.map(spec => (
-              <TableRow>
-                <TableCell>{spec.name}</TableCell>
-                <TableCell>{spec.value}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+      <Panel id='property-panel' title='Property Listing'>
+        <Form
+          preventDefault={true}
+          onSubmit={(event, reactions) => {
+            console.log(event)
+            reactions.closePanel('property-panel')
+          }}
+        >
+          <PanelBody>
+            <PanelSection>
+              <NumberInput
+                name='rentalPrice'
+                label='Monthly rental price'
+                required={true}
+              />
+              <Select
+                name='leaseType'
+                label='Lease type'
+                options={[
+                  { label: 'Monthly', value: 'Monthly' },
+                  { label: 'Yearly', value: 'Yearly' },
+                ]}
+              />
+            </PanelSection>
+          </PanelBody>
+          <PanelFooter>
+            <Button variant='primary' type='submit'>
+              Add property listing
+            </Button>
+          </PanelFooter>
+        </Form>
       </Panel>
-
-      <Button onClick={() => console.log('clicked')}>Click me</Button>
+      <Button
+        onClick={(__, reactions) => {
+          reactions.openPanel('property-panel')
+        }}
+      >
+        Add property listing
+      </Button>
     </>
   )
 }
