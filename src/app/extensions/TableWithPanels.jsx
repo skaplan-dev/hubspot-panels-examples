@@ -11,7 +11,7 @@ import {
   TableRow,
   Text,
 } from '@hubspot/ui-extensions'
-import { Panel } from '@hubspot/ui-extensions/experimental'
+import { Panel, PanelBody, PanelSection } from '@hubspot/ui-extensions/experimental'
 
 // Define the extension to be run within the Hubspot CRM
 hubspot.extend(({ runServerlessFunction, actions }) => (
@@ -69,7 +69,12 @@ const Extension = () => {
         title={`${selected} Quotes`}
         onClose={() => console.log('closed')}
       >
-        {selected && nameToQuotes[selected].map(quote => <Text>{quote}</Text>)}
+        <PanelBody>
+          <PanelSection>
+            {selected &&
+              nameToQuotes[selected].map(quote => <Text>{quote}</Text>)}
+          </PanelSection>
+        </PanelBody>
       </Panel>
 
       <Table>
