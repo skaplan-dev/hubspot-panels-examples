@@ -1,9 +1,9 @@
-exports.main = (context = {}, sendResponse) => {
+exports.main = (context = {}) => {
   const response = `This is coming from a serverless function`
 
   try {
-    sendResponse(response)
+    return response
   } catch (error) {
-    sendResponse(error)
+    return error
   }
 }

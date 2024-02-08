@@ -13,10 +13,10 @@
     "developing-local-components": "../../../scripts/useLocalVersionOfComponents.js && npm run clean-install-local"
   },
   "dependencies": {
-    "@hubspot/ui-extensions": "^0.8.8",
+    "@hubspot/ui-extensions": "^0.8.9",
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@hubspot/ui-extensions-dev-server": "^0.8.7"
+    "@hubspot/ui-extensions-dev-server": "^0.8.9"
   }
 }

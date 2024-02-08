@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import {
   Button,
@@ -6,22 +6,29 @@ import {
   hubspot,
   NumberInput,
   Select,
-} from '@hubspot/ui-extensions'
-import {
   Panel,
   PanelBody,
   PanelFooter,
   PanelSection,
-} from '@hubspot/ui-extensions/experimental'
+} from '@hubspot/ui-extensions'
 
 // Define the extension to be run within the Hubspot CRM
-hubspot.extend(({ runServerlessFunction, actions }) => (
-  <Extension runServerlessFunction={runServerlessFunction} actions={actions} />
+hubspot.extend(({ runServerlessFunction, context }) => (
+  <Extension runServerlessFunction={runServerlessFunction} context={context} />
 ))
 
-const Extension = () => {
+const NewComponent = 'NewComponent';
+
+const Extension = ({runServerlessFunction, context}) => {
+
+  console.log(context)
+  useEffect(()=> {
+    runServerlessFunction({name: 'myFunc'}).then((resp) => console.log(resp))
+  },[])
+
   return (
     <>
+
       <Panel id='property-panel' title='Property Listing'>
         <Form
           preventDefault={true}
@@ -38,8 +45,10 @@ const Extension = () => {
                 required={true}
               />
               <Select
+                required={true}
                 name='leaseType'
                 label='Lease type'
+                placeholder='Select a lease type'
                 options={[
                   { label: 'Monthly', value: 'Monthly' },
                   { label: 'Yearly', value: 'Yearly' },
@@ -54,13 +63,15 @@ const Extension = () => {
           </PanelFooter>
         </Form>
       </Panel>
+
       <Button
         onClick={(__, reactions) => {
           reactions.openPanel('property-panel')
         }}
       >
-        Add property listing
+        Add new test listing
       </Button>
+
     </>
   )
 }
