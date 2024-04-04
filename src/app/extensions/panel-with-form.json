@@ -3,7 +3,7 @@
   "data": {
     "title": "A Panel with a form",
     "uid": "panel_form_card",
-    "location": "crm.record.sidebar",
+    "location": "crm.record.tab",
     "module": {
       "file": "PanelWithForm.jsx"
     },

@@ -12,7 +12,7 @@ import {
   TableRow,
   Text,
 } from '@hubspot/ui-extensions'
-import { Panel, PanelSection } from '@hubspot/ui-extensions'
+import { Panel, PanelSection, PanelBody } from '@hubspot/ui-extensions'
 
 const specs = [
   {

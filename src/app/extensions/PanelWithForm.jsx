@@ -10,6 +10,10 @@ import {
   PanelBody,
   PanelFooter,
   PanelSection,
+  Image,
+  Divider,
+  DescriptionList,
+  DescriptionListItem,
 } from '@hubspot/ui-extensions'
 
 // Define the extension to be run within the Hubspot CRM
@@ -22,6 +26,7 @@ const NewComponent = 'NewComponent';
 const Extension = ({runServerlessFunction, context}) => {
 
   console.log(context)
+
   useEffect(()=> {
     runServerlessFunction({name: 'myFunc'}).then((resp) => console.log(resp))
   },[])
@@ -71,7 +76,21 @@ const Extension = ({runServerlessFunction, context}) => {
       >
         Add new test listing
       </Button>
-
+        <Divider/>
+        <DescriptionList >
+          <DescriptionListItem label='item 1'>
+            test 123
+          </DescriptionListItem>
+          <DescriptionListItem label='item 2'>
+            test 123
+          </DescriptionListItem>
+          <DescriptionListItem label='item 3'>
+            test 123
+          </DescriptionListItem>
+          <DescriptionListItem label='item 4'>
+            test 123
+          </DescriptionListItem>
+        </DescriptionList>
     </>
   )
 }
