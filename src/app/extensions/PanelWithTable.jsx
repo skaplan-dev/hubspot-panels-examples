@@ -55,38 +55,30 @@ hubspot.extend(({ runServerlessFunction, actions }) => (
   <Extension runServerlessFunction={runServerlessFunction} actions={actions} />
 ))
 
+const Modal = 'Modal'
+const ModalBody = 'ModalBody'
+
+const ModalFooter = 'ModalFooter'
+
 const Extension = () => {
   return (
     <>
-      <Panel
+      <Modal
         id='my-panel'
-        title={`IPhone 14 specs`}
+        title='Save changes?'
         onClose={() => console.log('closed')}
-        variant='modal'
+        variant='danger'
       >
-        <PanelBody>
-          <PanelSection>
-            <Table condensed={true}>
-              <TableHead>
-                <TableRow>
-                  <TableHeader>Spec</TableHeader>
-                  <TableHeader>Value</TableHeader>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {specs.map(spec => (
-                  <TableRow>
-                    <TableCell>{spec.name}</TableCell>
-                    <TableCell>{spec.value}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </PanelSection>
-
-          <PanelSection>test 123</PanelSection>
-        </PanelBody>
-      </Panel>
+        <ModalBody>
+          <Text>Save changes?</Text>
+        </ModalBody>
+        <ModalFooter>
+          <Button>Save</Button>
+          <Button onClick={(_, reactions) => reactions.openPanel('1234')}>
+            Open Panel
+          </Button>
+        </ModalFooter>
+      </Modal>
 
       <Table>
         <TableHead>
@@ -104,16 +96,35 @@ const Extension = () => {
                 <Button
                   size='xs'
                   onClick={async (__, reactions) => {
-                    reactions.openPanel('my-panel')
+                    reactions.openModal('my-panel')
                   }}
                 >
-                  See Specs
+                  Open Modal
+                </Button>
+                <Button
+                  size='xs'
+                  onClick={async (__, reactions) => {
+                    reactions.openPanel('1234')
+                  }}
+                >
+                  Open Panel
                 </Button>
               </Flex>
             </TableCell>
           </TableRow>
         </TableBody>
       </Table>
+      <Panel id='1234'>
+
+        <Button
+          size='xs'
+          onClick={async (__, reactions) => {
+            reactions.openModal('my-panel')
+          }}
+        >
+          See Specs
+        </Button>
+      </Panel>
     </>
   )
 }
