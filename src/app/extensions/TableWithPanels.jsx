@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Flex,
   hubspot,
@@ -59,9 +59,12 @@ const nameToQuotes = {
   ],
 }
 
-const Extension = () => {
+const Extension = ({actions}) => {
   const [selected, setSelected] = useState('')
 
+  useEffect(()=> {
+    actions.openIframeModal({url: 'google.com', flush: true})
+  },[])
   return (
     <>
       <Panel
