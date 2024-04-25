@@ -62,9 +62,6 @@ const nameToQuotes = {
 const Extension = ({actions}) => {
   const [selected, setSelected] = useState('')
 
-  useEffect(()=> {
-    actions.openIframeModal({url: 'google.com', flush: true})
-  },[])
   return (
     <>
       <Panel

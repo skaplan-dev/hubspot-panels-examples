@@ -2,7 +2,9 @@ import React from 'react'
 import {
   Button,
   Flex,
+  Form,
   hubspot,
+  Input,
   Link,
   Table,
   TableBody,
@@ -65,18 +67,18 @@ const Extension = () => {
     <>
       <Modal
         id='my-panel'
-        title='Save changes?'
+        title='Delete domain?'
         onClose={() => console.log('closed')}
-        variant='danger'
+        variant="danger"
       >
         <ModalBody>
-          <Text>Save changes?</Text>
+        You're about to delete the domain <Text format={{fontWeight : 'bold'}} inline={true}>www.examplewebsite.com</Text>. This can't be undone.
         </ModalBody>
         <ModalFooter>
-          <Button>Save</Button>
+          <Button variant='primary'>Delete domain</Button>
           <Button onClick={(_, reactions) => reactions.openPanel('1234')}>
-            Open Panel
-          </Button>
+Cancel
+</Button>
         </ModalFooter>
       </Modal>
 
