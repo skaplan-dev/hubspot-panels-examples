@@ -15,6 +15,7 @@ import {
   Text,
 } from '@hubspot/ui-extensions'
 import { Panel, PanelSection, PanelBody } from '@hubspot/ui-extensions'
+import {CrmAssociationTable} from '@hubspot/ui-extensions/crm'
 
 const specs = [
   {
@@ -74,14 +75,40 @@ const Extension = () => {
         <ModalBody>
         You're about to delete the domain <Text format={{fontWeight : 'bold'}} inline={true}>www.examplewebsite.com</Text>. This can't be undone.
         </ModalBody>
-        <ModalFooter>
+        {/* <ModalFooter>
           <Button variant='primary'>Delete domain</Button>
           <Button onClick={(_, reactions) => reactions.openPanel('1234')}>
 Cancel
 </Button>
-        </ModalFooter>
+        </ModalFooter> */}
       </Modal>
+      <CrmAssociationTable
+        objectTypeId="0-3"
+        propertyColumns={[
+          'dealname',
+          'hubspot_owner_id',
+          'amount',
+          'dealstage',
+        ]}
+        quickFilterProperties={['hubspot_owner_id', 'dealstage', 'amount']}
+        pageSize={10}
+        preFilters={[
+          {
+            operator: 'NOT_IN',
+            property: 'dealstage',
+            values: ['closedwon', 'closedlost'],
+          },
 
+        ]}
+        sort={[
+          {
+            direction: 1,
+            columnName: 'amount',
+          },
+        ]}
+        searchable={true}
+        pagination={true}
+      />
       <Table>
         <TableHead>
           <TableRow>
