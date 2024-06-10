@@ -3,7 +3,7 @@
   "data": {
     "title": "A Panel with a Table",
     "uid": "panel_table_card",
-    "location": "crm.record.tab",
+    "location": "crm.record.sidebar",
     "module": {
       "file": "PanelWithTable.jsx"
     },
