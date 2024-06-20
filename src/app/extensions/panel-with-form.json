@@ -7,6 +7,6 @@
     "module": {
       "file": "PanelWithForm.jsx"
     },
-    "objectTypes": [{ "name": "contacts" }]
+    "objectTypes": [{ "name": "contacts" }, { "name": "deals" }]
   }
 }
